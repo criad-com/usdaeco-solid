@@ -1,0 +1,138 @@
+[
+  {
+    "exact": 109,
+    "failed": 0,
+    "name": "ExactOfficeBodies",
+    "perClass": {
+      "IfcAirTerminal": {
+        "exact": 4,
+        "failed": 0,
+        "meshable": 4
+      },
+      "IfcAlarm": {
+        "exact": 1,
+        "failed": 0,
+        "meshable": 1
+      },
+      "IfcAudioVisualAppliance": {
+        "exact": 7,
+        "failed": 0,
+        "meshable": 7
+      },
+      "IfcCableCarrierFitting": {
+        "exact": 1,
+        "failed": 0,
+        "meshable": 1
+      },
+      "IfcCableCarrierSegment": {
+        "exact": 5,
+        "failed": 0,
+        "meshable": 5
+      },
+      "IfcColumn": {
+        "exact": 10,
+        "failed": 0,
+        "meshable": 10
+      },
+      "IfcCovering": {
+        "exact": 2,
+        "failed": 0,
+        "meshable": 2
+      },
+      "IfcDoor": {
+        "exact": 13,
+        "failed": 0,
+        "meshable": 13
+      },
+      "IfcElementAssembly": {
+        "exact": 2,
+        "failed": 0,
+        "meshable": 2
+      },
+      "IfcFurniture": {
+        "exact": 2,
+        "failed": 0,
+        "meshable": 2
+      },
+      "IfcLightFixture": {
+        "exact": 6,
+        "failed": 0,
+        "meshable": 6
+      },
+      "IfcPipeSegment": {
+        "exact": 6,
+        "failed": 0,
+        "meshable": 6
+      },
+      "IfcSanitaryTerminal": {
+        "exact": 2,
+        "failed": 0,
+        "meshable": 2
+      },
+      "IfcSlab": {
+        "exact": 4,
+        "failed": 0,
+        "meshable": 4
+      },
+      "IfcStair": {
+        "exact": 1,
+        "failed": 0,
+        "meshable": 1
+      },
+      "IfcUnitaryEquipment": {
+        "exact": 1,
+        "failed": 0,
+        "meshable": 1
+      },
+      "IfcWall": {
+        "exact": 42,
+        "failed": 0,
+        "meshable": 42
+      }
+    },
+    "selected": 109,
+    "sourceElements": 2980,
+    "sourceMeshes": 3015
+  },
+  {
+    "maxOdError": 0.0,
+    "maxThicknessError": 2.831068712794149e-15,
+    "name": "Measurements",
+    "pipes": 6,
+    "twins": 109,
+    "twinsWithinTolerance": 109,
+    "walls": 42
+  },
+  {
+    "compositionErrors": 0,
+    "name": "B7Mute",
+    "samePointsAndTransforms": true,
+    "twins": 109
+  },
+  {
+    "mappedProducts": 7,
+    "materialSubsets": 214,
+    "name": "RepresentationReuse",
+    "prototypes": 2
+  },
+  {
+    "name": "ExactClearances",
+    "pairs": [
+      {
+        "commonVolume": 0.00042836676119217495,
+        "distance": 0.0,
+        "id": "pipe.clash.hard"
+      },
+      {
+        "commonVolume": 0.0,
+        "distance": 0.005000000000000782,
+        "id": "pipe.clash.near"
+      },
+      {
+        "commonVolume": 0.0,
+        "distance": 0.0,
+        "id": "pipe.clash.tangent"
+      }
+    ]
+  }
+]

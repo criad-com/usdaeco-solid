@@ -1,0 +1,37 @@
+{
+  "Plugins": [
+    {
+      "Type": "python",
+      "Name": "usdAecoSolidValidators",
+      "Root": ".",
+      "Info": {
+        "Validators": {
+          "keywords": [
+            "UsdAecoSolidValidators"
+          ],
+          "ExactBodyWithoutToleranceChecker": {
+            "doc": "Validate exact body without tolerance.",
+            "schemaTypes": [
+              "UsdAecoDerivedGeometryAPI"
+            ]
+          },
+          "TwinWithoutFromChecker": {
+            "doc": "Validate twin without from.",
+            "schemaTypes": [
+              "UsdGeomMesh"
+            ]
+          },
+          "TwinStaleChecker": {
+            "doc": "Validate twin stale."
+          },
+          "ExactBodyNotSolidChecker": {
+            "doc": "Validate exact body not solid."
+          },
+          "ProxyTwinMissingChecker": {
+            "doc": "Validate proxy twin missing."
+          }
+        }
+      }
+    }
+  ]
+}

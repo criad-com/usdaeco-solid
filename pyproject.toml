@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usdaeco-solid"
+version = "0.1.4"
+requires-python = ">=3.11"
+dependencies = ["usdaeco-ifc>=0.2,<0.3", "usdaeco-toolchain>=0.3.4,<0.4"]
+
+[project.scripts]
+aeco-solid = "usdaeco_solid.cli:main"
+
+[tool.setuptools]
+packages = ["usdaeco_solid", "usdAecoSolidValidators"]
+package-dir = {usdaeco_solid = "tools/usdaeco_solid", usdAecoSolidValidators = "usdAecoSolidValidators"}
+
+[tool.setuptools.package-data]
+usdAecoSolidValidators = ["plugInfo.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["testenv"]
+python_files = ["test*.py"]

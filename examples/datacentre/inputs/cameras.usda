@@ -1,0 +1,49 @@
+#usda 1.0
+(
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "Renders"
+{
+    def Camera "overview"
+    {
+        float2 clippingRange = (0.01, 500)
+        float horizontalAperture = 60
+        token projection = "orthographic"
+        float verticalAperture = 37.5
+        matrix4d xformOp:transform = ( (0.7926239891046001, 0.6097107608496924, 0, 0), (-0.3479878122728677, 0.452384155954728, 0.8211291359772053, -0), (0.5006512702525123, -0.650846651328266, 0.5707424480878641, 0), (29, -9.000000000000002, 12, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def Camera "clearance"
+    {
+        float2 clippingRange = (0.01, 500)
+        float horizontalAperture = 25.5
+        token projection = "orthographic"
+        float verticalAperture = 15.9375
+        matrix4d xformOp:transform = ( (1, 0, -0, 0), (0, 0.3105186475053892, 0.950567288281805, 0), (0, -0.950567288281805, 0.3105186475053892, 0), (24, -3.000000000000001, 7.3500000000000005, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def Camera "hard"
+    {
+        float2 clippingRange = (0.01, 500)
+        float horizontalAperture = 40
+        token projection = "orthographic"
+        float verticalAperture = 25
+        matrix4d xformOp:transform = ( (0.8, 0.6, 0, 0), (-0.25963864055086283, 0.3461848540678171, 0.9015230574682735, -0), (0.5409138344809641, -0.7212184459746189, 0.4327310675847714, 0), (27, -7, 9, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def Camera "tangent"
+    {
+        float2 clippingRange = (0.01, 500)
+        float horizontalAperture = 25
+        token projection = "orthographic"
+        float verticalAperture = 15.625
+        matrix4d xformOp:transform = ( (0.90286051882393, 0.4299335803923477, 0, 0), (-0.17266655168165373, 0.36259975853147286, 0.9158098476448502, -0), (0.393737406756521, -0.8268485541886942, 0.4016121548916513, 0), (25, -4.999999999999999, 7.800000000000001, 0.9999999999999998) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+}
+

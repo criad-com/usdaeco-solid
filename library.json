@@ -1,0 +1,19 @@
+{
+  "name": "usdaeco-solid",
+  "version": "0.1.4",
+  "kind": "usecase",
+  "tier": "kind",
+  "licence": "MIT",
+  "namespaces": [
+    "solid"
+  ],
+  "classPrefixes": [
+    "AecoSolid"
+  ],
+  "requires": {
+    "usdAeco": ">=0.9,<1.0",
+    "usdaeco-ifc": ">=0.2,<0.3",
+    "usdSolid": ">=0.1,<0.2",
+    "usdSolidOcct": ">=0.1,<0.2"
+  }
+}

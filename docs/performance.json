@@ -1,0 +1,317 @@
+{
+  "after": [
+    {
+      "budgetSeconds": 120,
+      "findingsSha256": "9f1ed8858d5341b3b5b37139de922d1dade3c04ae2226a8f76a758c13de453a9",
+      "measurementsSha256": "5c3691169c3f1ab3287ec19e0db3fdc266cc8edd991dac7a4d0dfbcbe2f4021d",
+      "normalizedSha256": "4079650453d67ea1f16c962edd932a852aef37e5cc4b6624ec4a110682f08a1a",
+      "renderSamples": 8,
+      "seconds": 85.727,
+      "threads": 1,
+      "withinBudget": true
+    },
+    {
+      "budgetSeconds": 120,
+      "findingsSha256": "9f1ed8858d5341b3b5b37139de922d1dade3c04ae2226a8f76a758c13de453a9",
+      "measurementsSha256": "5c3691169c3f1ab3287ec19e0db3fdc266cc8edd991dac7a4d0dfbcbe2f4021d",
+      "normalizedSha256": "4079650453d67ea1f16c962edd932a852aef37e5cc4b6624ec4a110682f08a1a",
+      "renderSamples": 8,
+      "seconds": 68.185,
+      "threads": 2,
+      "withinBudget": true
+    }
+  ],
+  "before": [
+    {
+      "findingsSha256": "9f1ed8858d5341b3b5b37139de922d1dade3c04ae2226a8f76a758c13de453a9",
+      "measurementsSha256": "5c3691169c3f1ab3287ec19e0db3fdc266cc8edd991dac7a4d0dfbcbe2f4021d",
+      "normalizedSha256": "f85077ffdff1c99fcaa4d5ed46b8eed7e48c34268e795710be4d05592d795d00",
+      "renderSamples": 100,
+      "returncode": 0,
+      "seconds": 354.6,
+      "threads": 1,
+      "version": "0.1.1"
+    },
+    {
+      "findingsSha256": "9f1ed8858d5341b3b5b37139de922d1dade3c04ae2226a8f76a758c13de453a9",
+      "measurementsSha256": "5c3691169c3f1ab3287ec19e0db3fdc266cc8edd991dac7a4d0dfbcbe2f4021d",
+      "normalizedSha256": "f85077ffdff1c99fcaa4d5ed46b8eed7e48c34268e795710be4d05592d795d00",
+      "renderSamples": 100,
+      "returncode": 0,
+      "seconds": 218.256,
+      "threads": 2,
+      "version": "0.1.1"
+    }
+  ],
+  "budgetSeconds": 120,
+  "determinism": [
+    {
+      "normalizedBytes": 16720180,
+      "normalizedSha256": "4079650453d67ea1f16c962edd932a852aef37e5cc4b6624ec4a110682f08a1a",
+      "operation": "freshPublication",
+      "primCount": 13145,
+      "seconds": 64.298
+    },
+    {
+      "normalizedBytes": 16720180,
+      "normalizedSha256": "4079650453d67ea1f16c962edd932a852aef37e5cc4b6624ec4a110682f08a1a",
+      "operation": "reflattenOwnLayers",
+      "primCount": 13145,
+      "seconds": 1.812
+    }
+  ],
+  "method": "Fresh source root and native cache; complete publication including nine renders; ambient shared-machine load; one observation per thread limit.",
+  "pins": {
+    "axis": {
+      "library": "usdAecoAxis",
+      "ref": "v0.1.2",
+      "repo": "usdaeco-axis"
+    },
+    "core": {
+      "library": "usdAeco",
+      "ref": "v0.9.2",
+      "repo": "usdaeco-core"
+    },
+    "datacentre": {
+      "library": "usdaeco-datacentre",
+      "ref": "v0.4.5",
+      "repo": "usdaeco-datacentre"
+    },
+    "ifc": {
+      "library": "usdaeco-ifc",
+      "ref": "v0.2.0",
+      "repo": "usdaeco-ifc"
+    },
+    "toolchain": {
+      "library": "usdaeco-toolchain",
+      "ref": "v0.3.4",
+      "repo": "usdaeco-toolchain"
+    },
+    "usdSolid": {
+      "library": "usdSolid",
+      "ref": "v0.1.0",
+      "repo": "usdSolid"
+    },
+    "usdSolidOcct": {
+      "library": "usdSolidOcct",
+      "ref": "v0.1.0",
+      "repo": "usdSolidOcct"
+    }
+  },
+  "preservation": {
+    "committedImagesByteIdentical": true,
+    "crateDeltaEqualsUpstreamGeometryDelta": true,
+    "exactReportByteIdentical": true,
+    "expectedFindingsByteIdentical": true,
+    "measurementsByteIdentical": true,
+    "newNormalizedSha256": "4079650453d67ea1f16c962edd932a852aef37e5cc4b6624ec4a110682f08a1a",
+    "oldNormalizedSha256": "f85077ffdff1c99fcaa4d5ed46b8eed7e48c34268e795710be4d05592d795d00",
+    "ownLayersByteIdentical": 4
+  },
+  "profile": {
+    "after": {
+      "caller": {
+        "bodies": 109,
+        "compareSeconds": 4.577616666909307,
+        "exportSeconds": 16.220741624943912
+      },
+      "comparison": {
+        "operations": {
+          "Bridge.Area": {
+            "calls": 109,
+            "seconds": 0.3831044132821262
+          },
+          "Bridge.Build": {
+            "calls": 109,
+            "seconds": 0.4522829968482256
+          },
+          "Bridge.Common": {
+            "calls": 3,
+            "seconds": 0.00806445861235261
+          },
+          "Bridge.Distance": {
+            "calls": 3,
+            "seconds": 0.007000500336289406
+          },
+          "Bridge.IsValid": {
+            "calls": 109,
+            "seconds": 0.19586458196863532
+          },
+          "Bridge.SolidCount": {
+            "calls": 109,
+            "seconds": 0.00023116730153560638
+          },
+          "Bridge.Volume": {
+            "calls": 112,
+            "seconds": 0.054109747521579266
+          },
+          "Native.Inspect": {
+            "calls": 109,
+            "seconds": 0.12297521205618978
+          },
+          "Native.Transform": {
+            "calls": 109,
+            "seconds": 0.03575362591072917
+          },
+          "Stage.Open": {
+            "calls": 1,
+            "seconds": 0.34904325008392334
+          }
+        },
+        "seconds": 3.925469832960516
+      },
+      "export": {
+        "operations": {
+          "Bridge.Area": {
+            "calls": 109,
+            "seconds": 0.2756774597801268
+          },
+          "Bridge.Build": {
+            "calls": 109,
+            "seconds": 0.30680950125679374
+          },
+          "Bridge.IsValid": {
+            "calls": 218,
+            "seconds": 0.3771820059046149
+          },
+          "Bridge.SolidCount": {
+            "calls": 327,
+            "seconds": 0.0009053805842995644
+          },
+          "Bridge.Tessellate": {
+            "calls": 109,
+            "seconds": 0.5879742512479424
+          },
+          "Bridge.Volume": {
+            "calls": 218,
+            "seconds": 0.047297177370637655
+          },
+          "Bridge.Write": {
+            "calls": 109,
+            "seconds": 0.1899796724319458
+          },
+          "Native.Edges": {
+            "calls": 109,
+            "seconds": 0.005661501549184322
+          },
+          "Native.Inspect": {
+            "calls": 327,
+            "seconds": 0.11871571093797684
+          },
+          "Native.ReadBrep": {
+            "calls": 109,
+            "seconds": 0.012716575060039759
+          },
+          "Native.SplitClosed": {
+            "calls": 109,
+            "seconds": 0.06189687317237258
+          }
+        },
+        "seconds": 14.630797416903079
+      }
+    },
+    "before": {
+      "caller": {
+        "bodies": 109,
+        "compareSeconds": 4.934137291740626,
+        "exportSeconds": 16.552866000216454
+      },
+      "comparison": {
+        "operations": {
+          "Bridge.Area": {
+            "calls": 109,
+            "seconds": 0.3891973840072751
+          },
+          "Bridge.Build": {
+            "calls": 224,
+            "seconds": 0.9710214156657457
+          },
+          "Bridge.Common": {
+            "calls": 3,
+            "seconds": 0.007825166452676058
+          },
+          "Bridge.Distance": {
+            "calls": 3,
+            "seconds": 0.009616500698029995
+          },
+          "Bridge.IsValid": {
+            "calls": 109,
+            "seconds": 0.2256114985793829
+          },
+          "Bridge.SolidCount": {
+            "calls": 109,
+            "seconds": 0.00022641336545348167
+          },
+          "Bridge.Volume": {
+            "calls": 112,
+            "seconds": 0.05180233297869563
+          },
+          "Native.Inspect": {
+            "calls": 109,
+            "seconds": 0.10669045289978385
+          },
+          "Native.Transform": {
+            "calls": 115,
+            "seconds": 0.014736169017851353
+          },
+          "Stage.Open": {
+            "calls": 1,
+            "seconds": 0.17313329223543406
+          }
+        },
+        "seconds": 4.4772154171951115
+      },
+      "export": {
+        "operations": {
+          "Bridge.Area": {
+            "calls": 109,
+            "seconds": 0.28123524552211165
+          },
+          "Bridge.Build": {
+            "calls": 109,
+            "seconds": 0.3224619925022125
+          },
+          "Bridge.IsValid": {
+            "calls": 218,
+            "seconds": 0.35156617080792785
+          },
+          "Bridge.SolidCount": {
+            "calls": 327,
+            "seconds": 0.0008718692697584629
+          },
+          "Bridge.Tessellate": {
+            "calls": 109,
+            "seconds": 0.6119505823589861
+          },
+          "Bridge.Volume": {
+            "calls": 218,
+            "seconds": 0.037083422765135765
+          },
+          "Bridge.Write": {
+            "calls": 109,
+            "seconds": 0.1609332119114697
+          },
+          "Native.Edges": {
+            "calls": 109,
+            "seconds": 0.005321284756064415
+          },
+          "Native.Inspect": {
+            "calls": 327,
+            "seconds": 0.12382995896041393
+          },
+          "Native.ReadBrep": {
+            "calls": 109,
+            "seconds": 0.013108956627547741
+          },
+          "Native.SplitClosed": {
+            "calls": 109,
+            "seconds": 0.0627339156344533
+          }
+        },
+        "seconds": 15.030340458266437
+      }
+    },
+    "method": "Same 109 IFC bodies and composed placements, one USD thread, warm adapter cache; native call counters and wall timers; results byte-compared."
+  },
+  "version": "0.1.2"
+}

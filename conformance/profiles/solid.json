@@ -1,0 +1,12 @@
+{
+  "keywords": [
+    "UsdAecoSolidValidators"
+  ],
+  "severity_overrides": {
+    "ExactBodyWithoutTolerance": "error",
+    "TwinWithoutFrom": "error",
+    "TwinStale": "error",
+    "ExactBodyNotSolid": "error",
+    "ProxyTwinMissing": "error"
+  }
+}
