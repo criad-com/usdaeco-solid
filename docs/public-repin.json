@@ -1,0 +1,399 @@
+{
+  "finalChecks": {
+    "coreValidatorsFromExactSource": 8,
+    "exactSourceVersions": 7,
+    "familyHashRefs": 0,
+    "oldPublicReferences": 0,
+    "packageVersions": 3,
+    "publicationSweep": {
+      "detail": "60 files, 7650636 bytes, 0 findings",
+      "ok": true
+    },
+    "sourceSelection": "Exact local tag exports for final metadata, structure and registry checks. Shared core/axis sources advanced during the gate; consumed schema and core validator payloads were verified unchanged, and the gate core plugin metadata was v0.9.4.",
+    "structure": {
+      "checks": 29,
+      "failed": 0
+    },
+    "whitespace": "git diff --check passed"
+  },
+  "gate": {
+    "checks": 50,
+    "doublePublication": [
+      {
+        "normalizedBytes": 16721342,
+        "normalizedSha256": "026239a6b30f7a5e429719f54fe6a58b8f6187d5e78d306ee8724bd32397c2cb",
+        "operation": "freshPublication",
+        "primCount": 13145,
+        "seconds": 71.334
+      },
+      {
+        "normalizedBytes": 16721342,
+        "normalizedSha256": "026239a6b30f7a5e429719f54fe6a58b8f6187d5e78d306ee8724bd32397c2cb",
+        "operation": "reflattenOwnLayers",
+        "primCount": 13145,
+        "seconds": 2.016
+      }
+    ],
+    "failed": 0,
+    "findings": [
+      {
+        "exact": 109,
+        "failed": 0,
+        "name": "ExactOfficeBodies",
+        "perClass": {
+          "IfcAirTerminal": {
+            "exact": 4,
+            "failed": 0,
+            "meshable": 4
+          },
+          "IfcAlarm": {
+            "exact": 1,
+            "failed": 0,
+            "meshable": 1
+          },
+          "IfcAudioVisualAppliance": {
+            "exact": 7,
+            "failed": 0,
+            "meshable": 7
+          },
+          "IfcCableCarrierFitting": {
+            "exact": 1,
+            "failed": 0,
+            "meshable": 1
+          },
+          "IfcCableCarrierSegment": {
+            "exact": 5,
+            "failed": 0,
+            "meshable": 5
+          },
+          "IfcColumn": {
+            "exact": 10,
+            "failed": 0,
+            "meshable": 10
+          },
+          "IfcCovering": {
+            "exact": 2,
+            "failed": 0,
+            "meshable": 2
+          },
+          "IfcDoor": {
+            "exact": 13,
+            "failed": 0,
+            "meshable": 13
+          },
+          "IfcElementAssembly": {
+            "exact": 2,
+            "failed": 0,
+            "meshable": 2
+          },
+          "IfcFurniture": {
+            "exact": 2,
+            "failed": 0,
+            "meshable": 2
+          },
+          "IfcLightFixture": {
+            "exact": 6,
+            "failed": 0,
+            "meshable": 6
+          },
+          "IfcPipeSegment": {
+            "exact": 6,
+            "failed": 0,
+            "meshable": 6
+          },
+          "IfcSanitaryTerminal": {
+            "exact": 2,
+            "failed": 0,
+            "meshable": 2
+          },
+          "IfcSlab": {
+            "exact": 4,
+            "failed": 0,
+            "meshable": 4
+          },
+          "IfcStair": {
+            "exact": 1,
+            "failed": 0,
+            "meshable": 1
+          },
+          "IfcUnitaryEquipment": {
+            "exact": 1,
+            "failed": 0,
+            "meshable": 1
+          },
+          "IfcWall": {
+            "exact": 42,
+            "failed": 0,
+            "meshable": 42
+          }
+        },
+        "selected": 109,
+        "sourceElements": 2980,
+        "sourceMeshes": 3015
+      },
+      {
+        "maxOdError": 0.0,
+        "maxThicknessError": 2.831068712794149e-15,
+        "name": "Measurements",
+        "pipes": 6,
+        "twins": 109,
+        "twinsWithinTolerance": 109,
+        "walls": 42
+      },
+      {
+        "compositionErrors": 0,
+        "name": "B7Mute",
+        "samePointsAndTransforms": true,
+        "twins": 109
+      },
+      {
+        "mappedProducts": 7,
+        "materialSubsets": 214,
+        "name": "RepresentationReuse",
+        "prototypes": 2
+      },
+      {
+        "name": "ExactClearances",
+        "pairs": [
+          {
+            "commonVolume": 0.00042836676119217495,
+            "distance": 0.0,
+            "id": "pipe.clash.hard"
+          },
+          {
+            "commonVolume": 0.0,
+            "distance": 0.005000000000000782,
+            "id": "pipe.clash.near"
+          },
+          {
+            "commonVolume": 0.0,
+            "distance": 0.0,
+            "id": "pipe.clash.tangent"
+          }
+        ]
+      }
+    ],
+    "mutedRender": {
+      "bytes": 100147,
+      "height": 800,
+      "sha256": "d328cbd24dee6693a83580180c8c68dea60b68d26da2b83229214b80e13d250e",
+      "width": 1280
+    },
+    "native": {
+      "findings": [],
+      "mappedProducts": 7,
+      "materialBodies": 109,
+      "materialPartitionsValid": true,
+      "prototypes": 2,
+      "validators": 20
+    },
+    "notRun": 0,
+    "pytest": 23,
+    "skipped": 0,
+    "structure": {
+      "checks": 29,
+      "failed": 0,
+      "inapplicable": 14
+    },
+    "validation": {
+      "UsdAecoSolidValidators": {
+        "errors": 0,
+        "validators": 5,
+        "warnings": 0
+      },
+      "UsdAecoValidators": {
+        "errors": 0,
+        "validators": 8,
+        "warnings": 2
+      }
+    }
+  },
+  "nativeRuntime": {
+    "occt": "7.9.3",
+    "source": "Cached bridge v0.1.3 runtime includes schema and validators v0.1.0. The selected usdSolid v0.1.4 is a source pin; a native runtime combining both selected kit releases remains not proven.",
+    "status": "existing-runtime",
+    "usdSolid": "0.1.0",
+    "usdSolidOcct": "0.1.3"
+  },
+  "nix": {
+    "attempts": 1,
+    "cause": "Build execution was unavailable with max-jobs=0, no remote builders and no substitutes; the first required codeless-core derivation could not build. No retry or lockfile write.",
+    "evaluation": "Source package, library check, development shell and example app evaluated on aarch64-darwin.",
+    "exitCode": 1,
+    "inputResolution": "All seven direct tags and nested family follows resolved with exact local Git-tag overrides.",
+    "status": "not-proven"
+  },
+  "pins": {
+    "axis": {
+      "library": "usdAecoAxis",
+      "ref": "v0.1.4",
+      "repo": "usdaeco-axis",
+      "revision": "3717906cd0488b8357ff83b463553156eaddc62d"
+    },
+    "core": {
+      "library": "usdAeco",
+      "ref": "v0.9.4",
+      "repo": "usdaeco-core",
+      "revision": "80a099e14e7bb825b207548d0a4f8a93e9ffa62f"
+    },
+    "datacentre": {
+      "library": "usdaeco-datacentre",
+      "ref": "v0.4.8",
+      "repo": "usdaeco-datacentre",
+      "revision": "9e22b14c4909e50806805e735f93b1b425ac48cb"
+    },
+    "ifc": {
+      "library": "usdaeco-ifc",
+      "ref": "v0.2.2",
+      "repo": "usdaeco-ifc",
+      "revision": "8eb72e89af15e8642d914948384fe73038cc7817"
+    },
+    "toolchain": {
+      "library": "usdaeco-toolchain",
+      "ref": "v0.3.10",
+      "repo": "usdaeco-toolchain",
+      "revision": "59d3da5ff5114089b54efaaae38efdd7fe1b8e73"
+    },
+    "usdSolid": {
+      "library": "usdSolid",
+      "ref": "v0.1.4",
+      "repo": "usdSolid",
+      "revision": "8d03bd615744ffbade4527fd9c8fd7dfee99f21f"
+    },
+    "usdSolidOcct": {
+      "library": "usdSolidOcct",
+      "ref": "v0.1.3",
+      "repo": "usdSolidOcct",
+      "revision": "7b84881e20292ea79861ebbf19363c4b63aae426"
+    }
+  },
+  "publication": {
+    "byteIdenticalUsdFiles": 5,
+    "files": {
+      "examples/datacentre/result/README.md": {
+        "byteIdentical": false,
+        "bytes": 642,
+        "sha256": "4105e84a130d0cbcf398de32e1036516775c80f7a672242216336c965be52e1e"
+      },
+      "examples/datacentre/result/example.usdc": {
+        "byteIdentical": true,
+        "bytes": 2205821,
+        "sha256": "1f2ec7329a4b293667217f6f68863d5dcd5d181d35e48ddd4178cf2901b1384d"
+      },
+      "examples/datacentre/result/layers/inputs/cameras.usda": {
+        "byteIdentical": true,
+        "bytes": 2061,
+        "sha256": "1b624ef1ef222f52bc48119557b9b225625b54fa12eeb55422049252310f911e"
+      },
+      "examples/datacentre/result/layers/out/exact.usda": {
+        "byteIdentical": true,
+        "bytes": 1782762,
+        "sha256": "491ed97ca62b764af29fc2bccd956d11b4908e958771c54687b310f1552f2774"
+      },
+      "examples/datacentre/result/layers/out/presentation.usda": {
+        "byteIdentical": true,
+        "bytes": 831753,
+        "sha256": "efed56f4bb9da6a7de5c4e3a01f7f7483022fef4d37ecea4825b7bf6c3dc5517"
+      },
+      "examples/datacentre/result/layers/out/twins.usda": {
+        "byteIdentical": true,
+        "bytes": 1238621,
+        "sha256": "286a575401078e17fb8e6a7df714582c7984104aaa5bf9623be96daf7cb1f9ec"
+      },
+      "examples/datacentre/result/vanilla.png": {
+        "byteIdentical": true,
+        "bytes": 116381,
+        "sha256": "5de7c484f47258852ad8b25c5bf8783c5c2a164c1adf458d82d25a34e3bbdeaf"
+      }
+    },
+    "findingsUnchanged": true,
+    "freshRenders": [
+      {
+        "bytes": 93410,
+        "colors": 456,
+        "height": 800,
+        "path": "renders/clearance.png",
+        "sha256": "03c31d0748e1bc466bd202658872cc9b5c46f58823544db04f444e16574a71c9",
+        "width": 1280
+      },
+      {
+        "bytes": 117365,
+        "colors": 691,
+        "height": 800,
+        "path": "renders/hard.png",
+        "sha256": "1697ffa3ed0c40f209abeff3e9e7a35e3364d975b12628f8029a3d9205bbce0b",
+        "width": 1280
+      },
+      {
+        "bytes": 99726,
+        "colors": 659,
+        "height": 800,
+        "path": "renders/overview.png",
+        "sha256": "acb44822bab9db1ce718fc2a58c3bf90c5213675517acbd977b488f765740109",
+        "width": 1280
+      },
+      {
+        "bytes": 141470,
+        "colors": 689,
+        "height": 800,
+        "path": "renders/tangent.png",
+        "sha256": "6ed349eca4167265a4066277ab40117d06e2305ca936a99b719a246f7a19dc0c",
+        "width": 1280
+      },
+      {
+        "bytes": 110048,
+        "colors": 721,
+        "height": 800,
+        "path": "renders/wireframe-clearance.png",
+        "sha256": "6447d6894a8a4861e694c34fac7267a01f7e360399ebed001a2a6d9f21d6becc",
+        "width": 1280
+      },
+      {
+        "bytes": 149573,
+        "colors": 1484,
+        "height": 800,
+        "path": "renders/wireframe-hard.png",
+        "sha256": "f9077d5755a921710f5e08696b54c6ecc00c82fa9508a05350ecd941e4cda8cb",
+        "width": 1280
+      },
+      {
+        "bytes": 123151,
+        "colors": 1522,
+        "height": 800,
+        "path": "renders/wireframe-overview.png",
+        "sha256": "db194cad80afd0492e1fb6e90b10e7ea5ed8ce03e91dcc3cb462bcb91a5cf72e",
+        "width": 1280
+      },
+      {
+        "bytes": 175362,
+        "colors": 1308,
+        "height": 800,
+        "path": "renders/wireframe-tangent.png",
+        "sha256": "366548502527d2e9c5c297ba091286bd6ae9d1e424cdaefe130af1b5bab7116a",
+        "width": 1280
+      },
+      {
+        "bytes": 100712,
+        "colors": 664,
+        "height": 800,
+        "path": "result/vanilla.png",
+        "sha256": "66ab0cc024dfa2273a8e3300be2662c94932f2b410cc35c8ab6c83a7de4ed594",
+        "width": 1280
+      }
+    ],
+    "freshResultMatchesCommittedBytes": true,
+    "note": "Fresh render measurements below are observations from the gate, not hashes of the retained published PNGs. The published manifest describes the retained files. Canonical prototype naming refreshes the normalized digest while crate bytes remain identical.",
+    "resultBytes": 6178041,
+    "retainedPngFiles": 10,
+    "sourceHashesUnchanged": true,
+    "usdBytes": 6061018
+  },
+  "rangesChanged": false,
+  "upstream": {
+    "datacentre": "The v0.4.6-v0.4.8 release notes preserve all published USD. The three clash layers, manifest, specification and IFC geometry-generation code match v0.4.5. Generator package-version and integration-loading metadata changed.",
+    "ifc": "The exact exporter and native adapter sources match v0.2.0; the v0.2.1-v0.2.2 release notes describe pin and provenance updates.",
+    "kits": "The bridge implementation is unchanged since v0.1.0. Published kit receipts include newer cached artifacts, despite release prose still describing pending rebuilds. The available bridge v0.1.3 runtime pairs with schema/validators v0.1.0.",
+    "toolchain": "v0.3.9 enforces Nix version agreement; v0.3.10 enforces release-tag family refs. The existing canonical-prototype digest was refreshed on publication."
+  },
+  "version": "0.1.5"
+}

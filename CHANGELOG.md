@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.5
+
+- public re-pin: toolchain v0.3.10, core v0.9.4, axis v0.1.4,
+  datacentre v0.4.8, IFC v0.2.2, usdSolid v0.1.4, usdSolidOcct v0.1.3.
+  Record each tag's checked source revision; requirement ranges are unchanged.
+- Share the toolchain and its tagged build input through both native kits;
+  make the bridge consume the selected usdSolid release. This replaces the
+  kits' nested family hash refs and older tags in the resolved input graph.
+- Update the example's source-version guard and ignore its generated source
+  alias. Preserve producer stamps for the unchanged derivation algorithms.
+- Omit that alias from fresh publication copies in both the gate and benchmark.
+  A populated checkout previously copied the dependency directory through the
+  symlink, then failed the harness's source-alias check. Regressions cover
+  existing and dangling aliases while retaining ordinary source directories.
+- Deviation: both native kits are recursive flake inputs because the runtime
+  requires their package outputs. Four other family sources remain non-flakes.
+- Republish the example: the crate and four own layers retain all 6,061,018
+  bytes, findings and source hashes match, and the source-pin notice updates.
+  Refresh the normalized digest with the existing prototype canonicalizer;
+  retain all ten committed PNGs after nine fresh nonblank renders.
+- Verify 50 checks, 0 failed, 0 not run; 23 tests passed; structure S01–S29
+  passes with the unmodified v0.3.10 toolchain.
+- Deviations: native checks use the cached bridge v0.1.3 runtime paired with
+  schema/validators v0.1.0. The single offline Nix attempt resolves all inputs
+  and evaluates outputs, then cannot build with local jobs and remote builders
+  disabled. A complete build with the newly pinned kits remains unproven.
+  See [measured acceptance](docs/public-repin.md).
+
 ## 0.1.4
 
 - public names → github.com/criad-com in flake inputs and documentation.

@@ -24,7 +24,7 @@ EXAMPLE = ROOT / 'examples/datacentre'
 
 def double_publication():
     """Publish once from scratch, then re-flatten the authored layers elsewhere."""
-    from usdaeco_solid.publication import relocate_composition
+    from usdaeco_solid.publication import copy_publication_source, relocate_composition
     environment = {k: v for k, v in os.environ.items() if k != 'PYTHONPATH'}
     for variable, sibling in (('AECO_CORE_ROOT', 'usdaeco-core'),
                               ('AECO_IFC_ROOT', 'usdaeco-ifc'),
@@ -37,9 +37,7 @@ def double_publication():
     with tempfile.TemporaryDirectory(prefix='solid-publication-') as first, \
          tempfile.TemporaryDirectory(prefix='solid-reflatten-') as second:
         root = Path(first) / 'source'
-        shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(
-            '.git', '.work', 'out', 'result', 'result-*', 'renders',
-            '__pycache__', '.pytest_cache', '*.egg-info', '*.dist-info', 'STEERING.md'))
+        copy_publication_source(ROOT, root)
         child = dict(environment, AECO_EXACT_CACHE=str(root / '.work/native'),
                      PYTHONHASHSEED='1', PYTHONDONTWRITEBYTECODE='1')
         print('== stage: fresh publication with empty native cache', flush=True)

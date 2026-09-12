@@ -4,8 +4,31 @@ import sys
 
 import pytest
 from pxr import Gf, Sdf, Usd, UsdGeom
-from usdaeco_solid.publication import order_instances_for_flattening
+from usdaeco_solid.publication import copy_publication_source, order_instances_for_flattening
 from usdaeco_solid.publication import reflatten
+
+
+@pytest.mark.parametrize('dangling', [False, True])
+def test_fresh_publication_omits_generated_source_alias(tmp_path, dangling):
+    checkout = tmp_path / 'checkout'
+    inputs = checkout / 'examples/datacentre/inputs'
+    inputs.mkdir(parents=True)
+    (inputs / 'cameras.usda').write_text('#usda 1.0\n')
+    pinned = tmp_path / 'pinned'
+    if not dangling:
+        pinned.mkdir()
+        (pinned / 'data.txt').write_text('external source\n')
+    (inputs / 'source').symlink_to(pinned, target_is_directory=True)
+    # An ordinary source directory elsewhere must still be copied.
+    (checkout / 'tools/source').mkdir(parents=True)
+    (checkout / 'tools/source/keep.txt').write_text('authored source\n')
+    target = tmp_path / 'fresh'
+    copy_publication_source(checkout, target)
+    alias = target / 'examples/datacentre/inputs/source'
+    assert not alias.exists() and not alias.is_symlink()
+    assert (inputs / 'source').is_symlink()
+    assert (target / 'examples/datacentre/inputs/cameras.usda').read_bytes() == (inputs / 'cameras.usda').read_bytes()
+    assert (target / 'tools/source/keep.txt').read_text() == 'authored source\n'
 
 
 def instance_stage(order):

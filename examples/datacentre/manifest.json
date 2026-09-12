@@ -2,7 +2,7 @@
   "actual_findings_sha256": "9f1ed8858d5341b3b5b37139de922d1dade3c04ae2226a8f76a758c13de453a9",
   "budgetSeconds": 120,
   "datacentre": {
-    "ref": "v0.4.5",
+    "ref": "v0.4.8",
     "variant": "clash"
   },
   "facility": "demo-datacentre-01",
@@ -10,38 +10,45 @@
   "pins": {
     "axis": {
       "library": "usdAecoAxis",
-      "ref": "v0.1.2",
-      "repo": "usdaeco-axis"
+      "ref": "v0.1.4",
+      "repo": "usdaeco-axis",
+      "revision": "3717906cd0488b8357ff83b463553156eaddc62d"
     },
     "core": {
       "library": "usdAeco",
-      "ref": "v0.9.2",
-      "repo": "usdaeco-core"
+      "ref": "v0.9.4",
+      "repo": "usdaeco-core",
+      "revision": "80a099e14e7bb825b207548d0a4f8a93e9ffa62f"
     },
     "datacentre": {
       "library": "usdaeco-datacentre",
-      "ref": "v0.4.5",
-      "repo": "usdaeco-datacentre"
+      "ref": "v0.4.8",
+      "repo": "usdaeco-datacentre",
+      "revision": "9e22b14c4909e50806805e735f93b1b425ac48cb"
     },
     "ifc": {
       "library": "usdaeco-ifc",
-      "ref": "v0.2.0",
-      "repo": "usdaeco-ifc"
+      "ref": "v0.2.2",
+      "repo": "usdaeco-ifc",
+      "revision": "8eb72e89af15e8642d914948384fe73038cc7817"
     },
     "toolchain": {
       "library": "usdaeco-toolchain",
-      "ref": "v0.3.8",
-      "repo": "usdaeco-toolchain"
+      "ref": "v0.3.10",
+      "repo": "usdaeco-toolchain",
+      "revision": "59d3da5ff5114089b54efaaae38efdd7fe1b8e73"
     },
     "usdSolid": {
       "library": "usdSolid",
-      "ref": "v0.1.0",
-      "repo": "usdSolid"
+      "ref": "v0.1.4",
+      "repo": "usdSolid",
+      "revision": "8d03bd615744ffbade4527fd9c8fd7dfee99f21f"
     },
     "usdSolidOcct": {
       "library": "usdSolidOcct",
-      "ref": "v0.1.0",
-      "repo": "usdSolidOcct"
+      "ref": "v0.1.3",
+      "repo": "usdSolidOcct",
+      "revision": "7b84881e20292ea79861ebbf19363c4b63aae426"
     }
   },
   "renders": [
@@ -108,11 +115,11 @@
       {
         "bytes": 642,
         "path": "result/README.md",
-        "sha256": "814e9251a3074a1c0b16b61e12be0ba4c20420d1a34db5263a621dba031781ce"
+        "sha256": "4105e84a130d0cbcf398de32e1036516775c80f7a672242216336c965be52e1e"
       },
       {
         "bytes": 2205821,
-        "normalized_sha256": "4079650453d67ea1f16c962edd932a852aef37e5cc4b6624ec4a110682f08a1a",
+        "normalized_sha256": "026239a6b30f7a5e429719f54fe6a58b8f6187d5e78d306ee8724bd32397c2cb",
         "path": "result/example.usdc",
         "sha256": "1f2ec7329a4b293667217f6f68863d5dcd5d181d35e48ddd4178cf2901b1384d"
       },

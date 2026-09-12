@@ -1,4 +1,4 @@
-# Exact-body acceptance
+# Historical v0.1.2 exact-body acceptance
 
 Version 0.1.2 publishes once from an empty source root and native cache, then
 re-flattens the authored layers in a second process and root. It reuses the

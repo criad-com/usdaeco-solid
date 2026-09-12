@@ -8,5 +8,6 @@ out/
 /result-*
 flake.lock
 .work/
+/examples/datacentre/inputs/source
 STEERING.md
 *.dist-info/

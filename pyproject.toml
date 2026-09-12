@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "usdaeco-solid"
-version = "0.1.4"
+version = "0.1.5"
 requires-python = ">=3.11"
 dependencies = ["usdaeco-ifc>=0.2,<0.3", "usdaeco-toolchain>=0.3.4,<0.4"]
 

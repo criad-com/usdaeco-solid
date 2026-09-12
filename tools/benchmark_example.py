@@ -5,7 +5,6 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -15,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import bootstrap
 from usdaeco_check.example_result import normalized_layer
+from usdaeco_solid.publication import copy_publication_source
 
 
 def main():
@@ -37,9 +37,7 @@ def main():
         print(f'== stage: fresh publication, {threads} USD thread(s)', flush=True)
         with tempfile.TemporaryDirectory(prefix='solid-benchmark-') as temporary:
             root = Path(temporary) / 'source'
-            shutil.copytree(ROOT, root, ignore=shutil.ignore_patterns(
-                '.git', '.work', 'out', 'result', 'result-*', 'renders', '__pycache__',
-                '.pytest_cache', '*.egg-info', '*.dist-info', 'STEERING.md'))
+            copy_publication_source(ROOT, root)
             child = dict(environment, PXR_WORK_THREAD_LIMIT=str(threads),
                          AECO_EXACT_CACHE=str(root / '.work/native'), PYTHONHASHSEED='1')
             start = time.perf_counter()

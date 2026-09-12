@@ -4,6 +4,22 @@ import shutil
 from pxr import Sdf, Usd
 
 
+def copy_publication_source(source, target):
+    """Copy a checkout for a fresh run without following its generated alias."""
+    source = Path(source).resolve()
+    scratch = shutil.ignore_patterns(
+        '.git', '.work', 'out', 'result', 'result-*', 'renders', '__pycache__',
+        '.pytest_cache', '*.egg-info', '*.dist-info', 'STEERING.md')
+
+    def ignore(directory, names):
+        excluded = set(scratch(directory, names))
+        if Path(directory) == source / 'examples/datacentre/inputs':
+            excluded.add('source')  # Recreated by the harness for this run.
+        return excluded
+
+    return shutil.copytree(source, target, ignore=ignore)
+
+
 def relocate_composition(source, target):
     """Copy own layers and relocate the root's pinned source arcs.
 

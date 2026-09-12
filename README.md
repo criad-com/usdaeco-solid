@@ -55,6 +55,7 @@ export AECO_AXIS_ROOT="$(pwd)/../usdaeco-axis"
 export AECO_IFC_ROOT="$(pwd)/../usdaeco-ifc"
 export AECO_DATACENTRE_ROOT="$(pwd)/../usdaeco-datacentre"
 export USD_SOLID_OCCT_RUNTIME="$(pwd)/../usdSolidOcct/result-runtime"
+export PYTHONDONTWRITEBYTECODE=1
 export CORE_PLUGIN_DIR="$AECO_CORE_ROOT/usdAeco"
 export PXR_PLUGINPATH_NAME="$CORE_PLUGIN_DIR"
 env -u PYTHONPATH PYTHONPATH="$AECO_CORE_ROOT:$PWD" python check.py
@@ -63,13 +64,15 @@ env -u PYTHONPATH python examples/datacentre/run.py
 env -u PYTHONPATH python tools/benchmark_example.py --threads 1 2
 ```
 
-`AECO_IFC_ROOT` must contain version 0.2.0. The native runtime has a different
+`AECO_IFC_ROOT` must contain version 0.2.2. The native runtime has a different
 Python/USD ABI: the tools launch it in a separate process. A C++ compiler
 builds a small adapter against its existing shared libraries; no dependencies
 are installed. Set `AECO_EXACT_CACHE` to a writable directory when using an
 immutable IFC package. An absent runtime produces explicit NOT RUN rows;
 a present but broken runtime fails.
 The gate publishes once in an empty temporary source root and native cache.
+It omits the generated `inputs/source` alias from that copy; the harness
+recreates the alias against the selected data-centre source.
 It then re-flattens the already-authored layers in a second process and root,
 comparing normalized crate bytes with the unchanged `sdf-usda-v1` contract.
 The harness and validator rows reuse that fresh publication. This tests
@@ -87,18 +90,21 @@ Installed entry point: `aeco-solid`. The source module also supports
 `python -m usdaeco_solid` when the package is on the import path.
 Flake inputs use public repository names. Deployment mirrors are supplied
 outside this repository through the toolchain's registry-file wrapper or
-`--override-input`; see the [toolchain convention](https://github.com/criad-com/usdaeco-toolchain/blob/v0.3.8/docs/repo-conventions.md).
+`--override-input`; see the [toolchain convention](https://github.com/criad-com/usdaeco-toolchain/blob/v0.3.10/docs/repo-conventions.md).
+Both native kits are recursive inputs to supply the runtime package. Their
+family inputs follow the selected toolchain and usdSolid releases, including
+build toolchain v0.4.0. Core, axis, data centre and IFC remain source inputs.
 
 ## Family
 
 | Dependency | Supported range | Tested target |
 |---|---|---|
-| core | >=0.9,<1.0 | v0.9.2 |
-| IFC integration | >=0.2,<0.3 | v0.2.0 |
-| UsdSolid / usdSolidOcct | >=0.1,<0.2 | v0.1.0 |
-| toolchain | example/validation kit | v0.3.8 |
-| data centre | pinned example source | v0.4.5, clash |
-| axis | family compatibility pin | v0.1.2 |
+| core | >=0.9,<1.0 | v0.9.4 |
+| IFC integration | >=0.2,<0.3 | v0.2.2 |
+| UsdSolid / usdSolidOcct | >=0.1,<0.2 | v0.1.4 / v0.1.3 |
+| toolchain | example/validation kit | v0.3.10 |
+| data centre | pinned example source | v0.4.8, clash |
+| axis | family compatibility pin | v0.1.4 |
 
 The exact exporter belongs to `usdaeco-ifc`; its default converter remains
 unchanged. This library consumes exported results and adds no editing driver.
@@ -113,18 +119,25 @@ unchanged. This library consumes exported results and adds no editing driver.
 
 ## Status
 
-Version 0.1.4: **50 checks, 0 failed, 0 not run; 21 tests passed**.
+Version 0.1.5: **50 checks, 0 failed, 0 not run; 23 tests passed**.
+The public re-pin reproduces the crate and all four authored layers byte for
+byte (6,061,018 bytes), retaining all ten committed PNGs. Nine fresh renders
+are nonblank. Current [acceptance and deviations](docs/public-repin.md) record
+the pins, source revisions and render evidence. The native gate uses a cached
+bridge v0.1.3 runtime paired with schema/validators v0.1.0; the complete newly
+pinned native build remains unproven. The single offline Nix attempt resolves
+the input graph and evaluates the outputs, but does not complete the build.
 Version 0.1.2 fresh publication: **85.727 s with one USD thread; 68.185 s with two**,
 including fixture generation, native compilation and nine 8-sample renders.
-The v0.1.2 source re-pin refreshed the crate and its source-pin README;
+The historical v0.1.2 source re-pin refreshed the crate and its source-pin README;
 exact layers, measurements and all committed images retain their bytes.
 Publication is reproducible from relocated authored layers.
 The example declares `budgetSeconds: 120`; the benchmark enforces it.
-Pinned toolchain v0.3.8 supports manifest-driven harness budgets;
+Pinned toolchain v0.3.10 supports manifest-driven harness budgets;
 this gate reuses its fresh publication with `execute=False`.
 Exact export, measurement, tessellation, material subsets,
 mapped prototypes and B7 composition are exercised on the pinned example.
-See [v0.1.4 release notes](CHANGELOG.md) and [v0.1.2 acceptance and deviations](docs/acceptance.md)
+See [release notes](CHANGELOG.md) and [historical v0.1.2 acceptance and deviations](docs/acceptance.md)
 for check totals, source-data limitations and the Nix attempt. Stage-side driver evaluation,
 exact sync read-back and direct exact-body rendering remain deferred.
 

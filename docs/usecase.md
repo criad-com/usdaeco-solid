@@ -90,7 +90,7 @@ The mesh's original deflection remains the declared positional uncertainty.
 
 ## 6 The example on the demo data centre
 
-Variant `clash`, release v0.4.5, has 2,980 elements and 3,015 meshes. The office
+Variant `clash`, release v0.4.8, has 2,980 elements and 3,015 meshes. The office
 cohort is every element with a body whose world bounding-box midpoint lies
 within the office footprint from `spec/facility.yaml`, including its boundary.
 This selects both floors and their boundary elements: 109 products across
@@ -143,7 +143,8 @@ sets when they exist; it reports unsupported style/item correspondence.
 
 ## 9 Status
 
-Version 0.1.2. The publisher recreates mapped instances in sorted occurrence
+Version 0.1.5. The [public re-pin verification](public-repin.md) records current
+pins and native-runtime limits. The publisher recreates mapped instances in sorted occurrence
 order before flattening, preserving their sharing and composed geometry.
 The gate publishes once from scratch and re-flattens the same authored layers
 in a second process and root using the family's unchanged crate normalization.

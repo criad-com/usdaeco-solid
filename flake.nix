@@ -1,19 +1,24 @@
 {
   description = "Exact bodies, measurements and proxy twins";
   inputs = {
-    toolchain.url = "github:criad-com/usdaeco-toolchain?ref=v0.3.8";
-    core.url = "github:criad-com/usdaeco-core?ref=v0.9.2";
+    toolchain.url = "github:criad-com/usdaeco-toolchain?ref=v0.3.10";
+    core.url = "github:criad-com/usdaeco-core?ref=v0.9.4";
     core.flake = false;
-    axis.url = "github:criad-com/usdaeco-axis?ref=v0.1.2";
+    axis.url = "github:criad-com/usdaeco-axis?ref=v0.1.4";
     axis.flake = false;
-    datacentre.url = "github:criad-com/usdaeco-datacentre?ref=v0.4.5";
+    datacentre.url = "github:criad-com/usdaeco-datacentre?ref=v0.4.8";
     datacentre.flake = false;
-    ifc.url = "github:criad-com/usdaeco-ifc?ref=v0.2.0";
+    ifc.url = "github:criad-com/usdaeco-ifc?ref=v0.2.2";
     ifc.flake = false;
-    usdSolid.url = "github:criad-com/usdSolid?ref=v0.1.0";
-    usdSolid.flake = false;
-    usdSolidOcct.url = "github:criad-com/usdSolidOcct?ref=v0.1.0";
+    # The native runtime consumes both kits' package outputs. Share the
+    # selected family releases instead of resolving their older nested pins.
+    usdSolid.url = "github:criad-com/usdSolid?ref=v0.1.4";
+    usdSolid.inputs.aeco-toolchain.follows = "toolchain/aeco-toolchain";
+    usdSolid.inputs.usdaeco-toolchain.follows = "toolchain";
+    usdSolidOcct.url = "github:criad-com/usdSolidOcct?ref=v0.1.3";
+    usdSolidOcct.inputs.aeco-toolchain.follows = "toolchain/aeco-toolchain";
     usdSolidOcct.inputs.usdaeco-toolchain.follows = "toolchain";
+    usdSolidOcct.inputs.usdSolid.follows = "usdSolid";
     nixpkgs.follows = "toolchain/nixpkgs";
   };
   outputs = { self, nixpkgs, toolchain, core, axis, datacentre, ifc, usdSolid, usdSolidOcct }:
