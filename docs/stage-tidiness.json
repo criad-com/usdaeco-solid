@@ -1,0 +1,106 @@
+{
+  "gate": {
+    "checks": 50,
+    "doublePublication": [
+      {
+        "normalizedBytes": 16721342,
+        "normalizedSha256": "026239a6b30f7a5e429719f54fe6a58b8f6187d5e78d306ee8724bd32397c2cb",
+        "operation": "freshPublication",
+        "primCount": 13145,
+        "seconds": 70.459
+      },
+      {
+        "normalizedBytes": 16721342,
+        "normalizedSha256": "026239a6b30f7a5e429719f54fe6a58b8f6187d5e78d306ee8724bd32397c2cb",
+        "operation": "reflattenOwnLayers",
+        "primCount": 13145,
+        "seconds": 2.826
+      }
+    ],
+    "failed": 0,
+    "native": {
+      "findings": [],
+      "mappedProducts": 7,
+      "materialBodies": 109,
+      "materialPartitionsValid": true,
+      "prototypes": 2,
+      "validators": 20
+    },
+    "notRun": 0,
+    "pytest": 34,
+    "skipped": 0,
+    "structure": {
+      "checks": 29,
+      "failed": 0,
+      "inapplicable": 14
+    },
+    "validation": {
+      "UsdAecoSolidValidators": {
+        "errors": 0,
+        "validators": 5,
+        "warnings": 0
+      },
+      "UsdAecoValidators": {
+        "errors": 0,
+        "validators": 8,
+        "warnings": 2
+      }
+    }
+  },
+  "nix": {
+    "attempts": 1,
+    "exitCode": 1,
+    "reason": "Local path overrides lack revision metadata required by a native dependency flake.",
+    "status": "not-proven"
+  },
+  "publicationParity": {
+    "byteIdenticalFreshFiles": [
+      {
+        "bytes": 2205821,
+        "path": "example.usdc",
+        "sha256": "1f2ec7329a4b293667217f6f68863d5dcd5d181d35e48ddd4178cf2901b1384d"
+      },
+      {
+        "bytes": 1782762,
+        "path": "layers/out/exact.usda",
+        "sha256": "491ed97ca62b764af29fc2bccd956d11b4908e958771c54687b310f1552f2774"
+      },
+      {
+        "bytes": 1238621,
+        "path": "layers/out/twins.usda",
+        "sha256": "286a575401078e17fb8e6a7df714582c7984104aaa5bf9623be96daf7cb1f9ec"
+      },
+      {
+        "bytes": 831753,
+        "path": "layers/out/presentation.usda",
+        "sha256": "efed56f4bb9da6a7de5c4e3a01f7f7483022fef4d37ecea4825b7bf6c3dc5517"
+      },
+      {
+        "bytes": 2061,
+        "path": "layers/inputs/cameras.usda",
+        "sha256": "1b624ef1ef222f52bc48119557b9b225625b54fa12eeb55422049252310f911e"
+      }
+    ],
+    "retainedExampleFiles": 18,
+    "scopedComparisons": 109
+  },
+  "scopedPublication": {
+    "cameras": [
+      "/Renders/solid/overview",
+      "/Renders/solid/clearance",
+      "/Renders/solid/hard",
+      "/Renders/solid/tangent"
+    ],
+    "compositionErrors": 0,
+    "exactBodies": 109,
+    "prototypes": 4,
+    "reflattenParity": true,
+    "renders": 9,
+    "roots": [
+      "/demo_datacentre_01",
+      "/Renders",
+      "/Studies"
+    ]
+  },
+  "version": "0.1.6"
+}

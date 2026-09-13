@@ -7,6 +7,7 @@ from pathlib import Path
 import uuid
 from pxr import Gf, Sdf, Usd, UsdGeom, Vt
 from .cli import execute
+from .paths import scope_export, study_root
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -30,6 +31,7 @@ def hook(stage,out):
     import ifcopenshell.util.unit
     import yaml
     from usdaeco_ifc.exact import export_exact
+    root=study_root()
     data=Path(os.environ['AECO_DATACENTRE_ROOT']).resolve()
     publication=json.loads((data/'dist/clash/dc.manifest.json').read_text())
     manifest=json.loads((data/'manifests/demo-datacentre-01.clash.json').read_text())
@@ -46,6 +48,7 @@ def hook(stage,out):
     assert sum(p.IsA(UsdGeom.Mesh) for p in stage.Traverse())==publication['counts']['meshes']
     report=export_exact(source,data/'dist/clash/dc.usda',out,identities=ids)
     if report['failed']:raise ValueError('Exact export failed: '+json.dumps(report['perClass']))
+    scope_export(out,root)
     stage.GetRootLayer().subLayerPaths[:0]=['exact.usda','twins.usda']
     fallbacks=stage.GetMetadata('fallbackPrimTypes');fallbacks['BrepArray']=Vt.TokenArray(['Xform']);stage.SetMetadata('fallbackPrimTypes',fallbacks)
     stage.GetRootLayer().Save()
@@ -109,7 +112,10 @@ def hook(stage,out):
             mark(display.GetPrim(),edges.GetPrim().GetAttribute('aeco:derived:source').Get(),'wireframe','tessellated',.004,
                  'aeco-solid 0.1.0 guide display',edges.GetPath())
         clearance=next(p['distance'] for p in measured['pairs'] if p['id']=='pipe.clash.near')
-        label(stage,f'{clearance*1000:.3f} mm',(23.65,-1.5,7.06),stage.GetPrimAtPath('/Renders/clearance'))
+        cameras=[p for p in stage.Traverse() if p.IsA(UsdGeom.Camera) and p.GetName()=='clearance']
+        camera=next((p for p in cameras if p.GetParent().GetName()=='solid'), cameras[0] if len(cameras)==1 else None)
+        if camera is None:raise ValueError('A solid clearance camera is required')
+        label(stage,f'{clearance*1000:.3f} mm',(23.65,-1.5,7.06),camera,root=root)
     presentation.Save()
     stage.MuteLayer(exact_layer)
     stage.Flatten(addSourceFileComment=False).Export(str(ROOT/'.work/muted.usdc'))

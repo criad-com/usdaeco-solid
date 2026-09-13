@@ -13,6 +13,11 @@ def execute(operation, stage, *, prim=None, output=None, deflection=0.0001, edge
     request = dict(operation=operation, stage=str(Path(stage).resolve()), prim=prim,
                    output=str(Path(output).resolve()) if output else None,
                    deflection=deflection, edges=edges, pairs=pairs or [])
+    if operation == 'tessellate':
+        from pxr import Usd
+        from .paths import study_root
+        source = Usd.Stage.Open(request['stage'])
+        request['studyRoot'] = str(study_root(source))
     with tempfile.TemporaryDirectory(prefix="aeco-solid-") as temp:
         path = Path(temp) / "request.json"
         path.write_text(json.dumps(request))

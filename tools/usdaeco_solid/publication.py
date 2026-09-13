@@ -69,7 +69,7 @@ def reflatten(source, target):
             stage.UnmuteLayer(str(exact_layer))
     order_instances_for_flattening(stage)
     output = target / 'example.usdc'
-    if not stage.Flatten(addSourceFileComment=False).Export(str(output)):
+    if not flatten_study(stage).Export(str(output)):
         raise ValueError('Re-flattening failed')
     return output
 
@@ -96,3 +96,57 @@ def order_instances_for_flattening(stage):
         for path in paths:
             stage.GetPrimAtPath(path).SetInstanceable(True)
     return len(paths)
+
+
+def scope_publication_cameras(example):
+    """Finalize suite camera paths after the pinned renderer has made its views.
+
+    Toolchain v0.3.10 renders direct children of /Renders. Its transient render
+    inputs keep that layout; the authored result and archived inputs use the
+    library namespace. The original inputs and source layers are read-only.
+    """
+    from .paths import scope_cameras
+    from usdaeco_check.example_result import record_result
+    example = Path(example)
+    stage = Usd.Stage.Open(str(example / 'out/example.usda'))
+    root = stage.GetRootLayer()
+    source = (example / 'inputs/cameras.usda').resolve()
+    camera_file = example / 'out/cameras.usda'
+    camera_layer = Sdf.Layer.FindOrOpen(str(camera_file)) if camera_file.exists() else Sdf.Layer.CreateNew(str(camera_file))
+    camera_layer.TransferContent(Sdf.Layer.FindOrOpen(str(source)))
+    scope_cameras(camera_layer)
+    camera_layer.Save()
+    root.subLayerPaths = [
+        'cameras.usda' if Path(Sdf.ComputeAssetPathRelativeToLayer(root, asset)).resolve() == source else asset
+        for asset in root.subLayerPaths]
+    root.Save()
+    order_instances_for_flattening(stage)
+    root.Save()
+    result = example / 'out/result'
+    shutil.copyfile(camera_layer.realPath, result / 'layers/inputs/cameras.usda')
+    flatten_study(stage).Export(str(result / 'example.usdc'))
+    return record_result(result)
+
+
+def flatten_study(stage):
+    """Keep USD's generated instance prototypes inside a configured study too."""
+    from .paths import remap_paths, scope, study_root
+    layer = stage.Flatten(addSourceFileComment=False)
+    root = study_root(stage)
+    if root != Sdf.Path.absoluteRootPath:
+        # Canonicalize before nesting: the pinned normalizer recognizes root
+        # prototypes only. USD's allocation numbers vary across processes.
+        from usdaeco_check.prototypes import canonicalize_prototypes
+        canonicalize_prototypes(layer)
+        parent = root.AppendChild('ExactPrototypes')
+        mappings = [(p.path, parent.AppendChild(p.name)) for p in layer.rootPrims
+                    if p.name.startswith('Flattened_Prototype_') and p.specifier == Sdf.SpecifierOver]
+        if mappings:
+            scope(layer, parent)
+            edit = Sdf.BatchNamespaceEdit()
+            for old, new in mappings:
+                edit.Add(old, new)
+            if not layer.Apply(edit):
+                raise ValueError('Cannot scope flattened instance prototypes')
+            remap_paths(layer, mappings)
+    return layer

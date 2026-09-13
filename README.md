@@ -95,6 +95,29 @@ Both native kits are recursive inputs to supply the runtime package. Their
 family inputs follow the selected toolchain and usdSolid releases, including
 build toolchain v0.4.0. Core, axis, data centre and IFC remain source inputs.
 
+For suite composition, set `AECO_STUDY_ROOT=/Studies/solid` before calling the
+example hook or running the example. Exact prototypes and materials then live
+at `/Studies/solid/ExactPrototypes` and `/Studies/solid/ExactMaterials`; exact
+bodies and twins keep their element paths. Clearance labels share the study
+scope, and finalized example cameras use `/Renders/solid/<camera>`. The study
+ancestors are plain Scopes. No catalog is added: the project keeps its catalog.
+
+The default `/` preserves the committed example, including the historical
+`/__ExactPrototypes` name. `scope_export(output, root)` in
+`usdaeco_solid.paths` also scopes writable IFC-exported `exact.usda` and
+`twins.usda` layers for callers that select their own elements. It updates
+bindings, internal references, shader connections and metadata paths together.
+Each library exports its own materials; a new solid tessellation copies its
+source material into solid's root. Persisted solid metadata takes precedence
+over the environment, including after flattening. Measurements and validators
+discover exact bodies and their relationships directly from stage data.
+
+The standalone runner finalizes camera namespaces after rendering: pinned
+toolchain v0.3.10 requires direct `/Renders` children in its temporary render
+inputs. The suite can supply `/Renders/solid` cameras to the hook directly.
+Set `AECO_DATACENTRE_FULL_ROOT` to the v0.5.2 checkout for the additional
+full-stage catalog test; the example itself remains pinned to v0.4.8.
+
 ## Family
 
 | Dependency | Supported range | Tested target |
@@ -119,10 +142,14 @@ unchanged. This library consumes exported results and adds no editing driver.
 
 ## Status
 
+Version 0.1.6: **50 checks, 0 failed, 0 not run; 34 tests passed**.
+Configurable study roots preserve the default example bytes; the scoped crate
+contains only the project, Studies and Renders at its root. See
+[stage-tidiness acceptance and deviations](docs/stage-tidiness.md).
 Version 0.1.5: **50 checks, 0 failed, 0 not run; 23 tests passed**.
 The public re-pin reproduces the crate and all four authored layers byte for
 byte (6,061,018 bytes), retaining all ten committed PNGs. Nine fresh renders
-are nonblank. Current [acceptance and deviations](docs/public-repin.md) record
+are nonblank. The v0.1.5 [acceptance and deviations](docs/public-repin.md) record
 the pins, source revisions and render evidence. The native gate uses a cached
 bridge v0.1.3 runtime paired with schema/validators v0.1.0; the complete newly
 pinned native build remains unproven. The single offline Nix attempt resolves

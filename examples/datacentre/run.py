@@ -39,6 +39,14 @@ def main():
         if args.publish:shutil.copyfile(example/'out/renders'/name,example/'renders'/name)
     manifest['renders'].extend(guides)
     manifest['budgetSeconds']=budget
+    from pxr import Sdf
+    from usdaeco_solid.paths import study_root
+    if study_root()!=Sdf.Path.absoluteRootPath:
+        from usdaeco_solid.publication import scope_publication_cameras
+        manifest['result']=scope_publication_cameras(example)
+        if args.publish:
+            shutil.rmtree(example/'result')
+            shutil.copytree(example/'out/result',example/'result')
     (example/'out/manifest.json').write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n')
     if args.publish:shutil.copyfile(example/'out/manifest.json',example/'manifest.json')
 

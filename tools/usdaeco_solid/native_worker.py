@@ -60,9 +60,17 @@ def main(request_path):
         return world_shapes[path]
 
     if operation == "tessellate":
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from usdaeco_solid.paths import ROOT_KEY, ROOT_MARKER, copy_material, scope
+        source_layer = stage.Flatten(addSourceFileComment=False)
         layer = Sdf.Layer.CreateNew(request["output"])
         stage.GetSessionLayer().subLayerPaths.append(layer.identifier)
         stage.SetEditTarget(layer)
+        root = Sdf.Path(request['studyRoot'])
+        if root != Sdf.Path.absoluteRootPath:
+            scope(layer, root)
+            layer.GetPrimAtPath(root).customData = {ROOT_MARKER: True}
+            layer.customLayerData = {ROOT_KEY: str(root)}
     for prim in prims:
         row = dict(path=str(prim.GetPath()))
         try:
@@ -86,7 +94,13 @@ def main(request_path):
                     subset.CreateFamilyNameAttr(source.GetFamilyNameAttr().Get())
                     subset.CreateIndicesAttr([i for i,face in enumerate(tess.sourceFaceIndices) if face in faces])
                     material,_=UsdShade.MaterialBindingAPI(child).ComputeBoundMaterial()
-                    if material:UsdShade.MaterialBindingAPI.Apply(subset.GetPrim()).Bind(material)
+                    if material:
+                        own = copy_material(stage, material, root, source_layer)
+                        UsdShade.MaterialBindingAPI.Apply(subset.GetPrim()).Bind(own)
+                material,_=UsdShade.MaterialBindingAPI(prim).ComputeBoundMaterial()
+                if material:
+                    own = copy_material(stage, material, root, source_layer)
+                    UsdShade.MaterialBindingAPI.Apply(twin.GetPrim()).Bind(own)
                 if subsets:UsdGeom.Subset.SetFamilyType(UsdGeom.Imageable(twin.GetPrim()),'materialBind','partition')
                 twin.GetPrim().GetAttribute("aeco:derived:stamp").Set(
                     twin.GetPrim().GetAttribute("aeco:derived:stamp").Get().replace("aeco-ifc-exact 0.2.0", "aeco-solid 0.1.0"))

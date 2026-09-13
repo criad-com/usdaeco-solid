@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.6
+
+- Add `AECO_STUDY_ROOT` (default `/`). The suite uses `/Studies/solid`,
+  with `ExactPrototypes` and `ExactMaterials` beneath plain Scope ancestors;
+  exact bodies and proxy twins stay under their elements.
+- Adapt the pinned IFC exporter's writable layers, rebasing internal prototype
+  references, material bindings, shader connections and metadata paths.
+  The default keeps `/__ExactPrototypes` and all committed example bytes.
+- Persist the solid root in layer and prim metadata for reopened and flattened
+  stages. Tessellation copies materials into its producing library's root,
+  including when the source exact body belongs to clash.
+- Put scoped clearance annotations inside the study; finalized example cameras
+  live under `/Renders/solid`. The pinned renderer uses temporary legacy camera
+  paths before finalization because it only discovers direct children.
+- Verify the live pinned data-centre hook, scoped exported instances, native
+  CLI operations, and the single project catalog in data centre v0.5.2 full.
+  Dependency pins and geometry producer stamps remain unchanged.
+- Keep USD-generated flattened prototypes inside the scoped prototype container,
+  with canonical names for reproducible independent re-flattening.
+- Verify 50 checks, 0 failed, 0 not run; 34 tests pass. The default crate and
+  all four archived layers retain their 6,061,018 bytes; all committed example
+  artifacts stay unchanged. The scoped publication renders nine nonblank views.
+- Deviation: the single offline Nix evaluation fails on missing `.rev` metadata
+  from local path overrides in a native dependency; no retry or lockfile write.
+  See [stage-tidiness acceptance](docs/stage-tidiness.md).
+
 ## 0.1.5
 
 - public re-pin: toolchain v0.3.10, core v0.9.4, axis v0.1.4,

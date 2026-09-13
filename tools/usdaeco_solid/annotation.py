@@ -1,5 +1,6 @@
 """Small USD stroke labels: the measured value stays in the rendered scene."""
-from pxr import Gf, UsdGeom
+from pxr import Gf, Sdf, UsdGeom
+from .paths import checked_root, scope, study_root
 
 GLYPHS={
     '0': [[(0,0),(0,1),(.6,1),(.6,0),(0,0)]],
@@ -41,7 +42,10 @@ def mesh_strokes(stage,curves,path,radius=.002):
     return mesh
 
 
-def label(stage,text,position,camera):
+def label(stage,text,position,camera,*,root=None):
+    root=study_root(stage) if root is None else checked_root(root)
+    parent=Sdf.Path('/Renders') if root==Sdf.Path.absoluteRootPath else root
+    if root!=Sdf.Path.absoluteRootPath:scope(stage.GetEditTarget().GetLayer(),root)
     matrix=UsdGeom.Xformable(camera).GetLocalTransformation()
     right=Gf.Vec3d(*tuple(matrix[0])[:3]);up=Gf.Vec3d(*tuple(matrix[1])[:3])
     origin=Gf.Vec3d(*position);scale=.085
@@ -49,7 +53,7 @@ def label(stage,text,position,camera):
     for i,char in enumerate(text):
         for stroke in GLYPHS[char]:
             lines.append([origin+scale*((x+.85*i)*right+y*up) for x,y in stroke])
-    curves=UsdGeom.BasisCurves.Define(stage,'/Renders/MeasuredClearance')
+    curves=UsdGeom.BasisCurves.Define(stage,parent.AppendChild('MeasuredClearance'))
     curves.CreateTypeAttr('linear');curves.CreateWrapAttr('nonperiodic')
     curves.CreateCurveVertexCountsAttr([len(line) for line in lines])
     curves.CreatePointsAttr([Gf.Vec3f(p) for line in lines for p in line])
@@ -57,4 +61,4 @@ def label(stage,text,position,camera):
     curves.CreateDisplayColorAttr([(.04,.13,.19)])
     curves.CreatePurposeAttr('guide')
     curves.GetPrim().SetDocumentation('Exact kernel clearance: '+text)
-    mesh_strokes(stage,curves,'/Renders/MeasuredClearanceDisplay',radius=.003)
+    mesh_strokes(stage,curves,parent.AppendChild('MeasuredClearanceDisplay'),radius=.003)
